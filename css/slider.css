@@ -1,0 +1,40 @@
+.slider {
+  position: relative;
+  top: 100px;
+  width: 1200px;
+  padding: 10px 60px;
+  border: 3px solid #CCC;
+  border-radius: 15px;
+  background: #eee;
+  margin: auto;
+}
+
+.images {
+  width: 9999px;
+  padding: 0;
+  transition: margin-left 200ms;
+}
+
+.images img {
+  height: 250px;
+  padding-right: 10px;
+}
+
+.arrow {
+  position: absolute;
+  top: 110px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.previous { left: 5px; }
+
+.next { right: 5px; }
+
+.gallery {
+  overflow: hidden;
+}
+
+.gallery li {
+  display: inline-block;
+}

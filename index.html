@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>perco</title>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/modal.css">
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="./js/slider.js" ></script>
+    <script type="text/javascript" src="./js/modal.js" ></script>
+    <script type="text/javascript" src="./js/index.js" ></script>
+</head>
+
+<body>
+    <div id="slider" class="slider">
+        <img src="./images/left-arrow.png" class="arrow previous" alt="previous">
+        <div class="gallery">
+            <ul class="images" id="imagesID" >
+            </ul>
+        </div>
+        <img src="./images/right-arrow.png" class="arrow next" alt="next">
+    </div>
+
+    <!--  Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <span class="close"><button onclick="closeModal();">Close</button></span>
+                <div class="modalImage">
+
+                </div>
+                <div class="modalLike">
+
+                </div>
+                <div class="modalCaption">
+
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
