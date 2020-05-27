@@ -7,8 +7,7 @@ function closeModal() {
     document.getElementById('myModal').style.display = "none";
 }
 
-$(document).ready(function() {
-
+document.addEventListener("DOMContentLoaded", function() {
     myImages = [
         {
             src: 'perco0.jpg',
@@ -70,3 +69,4 @@ $(document).ready(function() {
 
     });
 });
+
