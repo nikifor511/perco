@@ -3,7 +3,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 20px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -15,17 +15,16 @@
 
 /* Modal Content */
 .modal-content {
-  position: relative;
   background-color: #fefefe;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: min-content;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
+  /* -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s */
 }
 
 .modal-content, #caption {
@@ -79,7 +78,6 @@
   color: white;
 }
 
-/* Caption of Modal Image */
 #caption {
   margin: auto;
   display: block;
@@ -91,14 +89,8 @@
   height: 150px;
 }
 
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
-}
 
-.like {
+.modalLike {
     width: 30px;
     cursor: pointer;
 }

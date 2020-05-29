@@ -4,7 +4,8 @@ class Slider {
 
     constructor(images) {
         this.images = images;
-        this.currentImage = 0;
+        this.currentSlyderImage = 0;
+        this.currentModalImageID = null;
         this.position = 0;
         this.fullWidth = 0;
         let self = this;
@@ -19,16 +20,20 @@ class Slider {
               img.onload = function() {
                   self.fullWidth = self.fullWidth + img.clientWidth + 4;
               }
-              img.setAttribute('onclick', 'openModal(this.id);');
+              img.onclick = function() {
+                  self.currentModalImageID = this.id;
+                  self.renderModal();
+                  document.getElementById('myModal').style.display = "block";
+              }
               li.append(img);
               ul.append(li);
         }
     }
 
     next() {
-        this.position = this.position - document.getElementById( this.images[this.currentImage].src ).clientWidth - 4;
-        if (++this.currentImage >= this.images.length ) {
-            this.currentImage = 0;
+        this.position = this.position - document.getElementById( this.images[this.currentSlyderImage].src ).clientWidth - 4;
+        if (++this.currentSlyderImage >= this.images.length ) {
+            this.currentSlyderImage = 0;
             this.position = 0;
         }
         console.log(this.position);
@@ -37,40 +42,54 @@ class Slider {
 
     previous() {
         // this.calcFullWidthGallery();
-        if (--this.currentImage <= -1 ) {
-            this.currentImage = this.images.length - 1;  //
-            this.position =  document.getElementById( this.images[this.currentImage].src ).clientWidth - this.fullWidth;
+        if (--this.currentSlyderImage <= -1 ) {
+            this.currentSlyderImage = this.images.length - 1;  //
+            this.position =  document.getElementById( this.images[this.currentSlyderImage].src ).clientWidth - this.fullWidth;
         } else {
-            this.position = this.position + document.getElementById( this.images[this.currentImage].src ).clientWidth + 4;
+            this.position = this.position + document.getElementById( this.images[this.currentSlyderImage].src ).clientWidth + 4;
         }
 
         console.log(this.position);
         return this.position;
     }
 
-    like() {
-        this.images[this.currentImage].isLike = !this.images[this.currentImage].isLike;
-        this.render();
-    }
-
     renderModal() {
+        let self = this;
+        let img = this.images.find(function(image) {
+            return image.src == self.currentModalImageID;
+        });
+        console.log(img);
+        
+        let modalImage = document.getElementsByClassName('modalImage')[0];
+        modalImage.src = './images/' + img.src;
 
-        let imageSrc = './images/' + this.images[this.currentImage].src;
-        let imageHTML = '<img src="' + imageSrc + '" alt="' + this.images[this.currentImage].src + '">';
-        console.log(imageHTML);
-        // let imageHTML = '<a href="' + imageSrc + '" data-lightbox="' + imageSrc +
-        //            '" data-title="' + this.images[this.currentImage].caption +
-        //            '"><img src="' + imageSrc + '" alt="sunrise"></a>';
-        $('.modalImage').html(imageHTML);
-
-        let likeHTML = '';
-        if (this.images[this.currentImage].isLike) {
-            likeHTML = '<img src="./images/like.png"  class="like" alt="like">';
-        } else {
-            likeHTML = '<img src="./images/no-like.png"  class="like" alt="like">';
+        let modalLike = document.getElementsByClassName('modalLike')[0];
+        modalLike.onclick = function() {
+            img.isLike = !img.isLike;
+            if (img.isLike) {
+                modalLike.src = './images/like.png';
+            } else {
+                modalLike.src = './images/no-like.png';
+            }   
         }
-        $('.modalLike').html(likeHTML);
+        if (img.isLike) {
+            modalLike.src = './images/like.png';
+        } else {
+            modalLike.src = './images/no-like.png';
+        }   
 
-        $('.modalCaption').html(this.images[this.currentImage].caption);
+        let modalCaptionText = document.getElementById('modalCaptionText');
+        modalCaptionText.value = img.caption;
+
+        let modalCaptionOk = document.getElementById('modalCaptionOk');
+        modalCaptionOk.onclick = function() {
+            img.caption = modalCaptionText.value;
+        }
+
+        modalCaptionOk
+        
+        console.log(modalImage);
     }
+
 }
+
