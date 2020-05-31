@@ -1,6 +1,6 @@
 'use strict';
 
-class Slider {
+class Gallery {
 
     constructor(images) {
         this.images = images;
@@ -10,7 +10,7 @@ class Slider {
         this.fullWidth = 0;
         let self = this;
 
-        let ul = document.getElementById('imagesID');
+        let ul = document.getElementsByClassName('images')[0];
         for (let i = 0; i < this.images.length; i++) {
               let li = document.createElement("li");
 
@@ -28,6 +28,7 @@ class Slider {
               li.append(img);
               ul.append(li);
         }
+
     }
 
     next() {
@@ -81,12 +82,11 @@ class Slider {
         let modalCaptionText = document.getElementById('modalCaptionText');
         modalCaptionText.value = img.caption;
 
-        let modalCaptionOk = document.getElementById('modalCaptionOk');
-        modalCaptionOk.onclick = function() {
+        let modalCaptionChange = document.getElementById('modalCaptionChange');
+        modalCaptionChange.onclick = function() {
             img.caption = modalCaptionText.value;
-        }
-
-        modalCaptionOk
+            modalCaptionText.style.backgroundColor = "#9999";
+        }        
         
         console.log(modalImage);
     }

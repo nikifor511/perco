@@ -13,8 +13,7 @@
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="./js/slider.js" ></script>
-    <script type="text/javascript" src="./js/modal.js" ></script>
+    <script type="text/javascript" src="./js/gallery.js" ></script>
     <script type="text/javascript" src="./js/index.js" ></script>
 </head>
 
@@ -22,7 +21,7 @@
     <div id="slider" class="slider">
         <img src="./images/left-arrow.png" class="arrow previous" alt="previous">
         <div class="gallery">
-            <ul class="images" id="imagesID" >
+            <ul class="images">
             </ul>
         </div>
         <img src="./images/right-arrow.png" class="arrow next" alt="next">
@@ -31,21 +30,18 @@
     <!--  Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <div class="modal-body">
-                <span class="close"><button onclick="closeModal();">Close</button></span>
-
-                <img src="#" class="modalImage"></img> <br>
-
-                <img src="#" class="modalLike" onclick="slider.like();"></img> <br>
-
-                <div class="modalCaption">
-                    <input type="text" id="modalCaptionText">
-                    <input type="button" id="modalCaptionOk" value="Ok">
-                </div>
+            <div class="modal-header">
+                
             </div>
-            <!-- <div class="modal-footer">
-                <h3>Modal Footer</h3>
-            </div> -->
+            <div class="modal-body">
+                <img class="close" src="./images/close.png" onclick="closeModal();">
+                <img src="#" class="modalImage"></img> <br>                
+            </div>
+            <div class="modal-footer">
+                <img src="#" class="modalLike" onclick="slider.like();"></img> <br>
+                <input type="text" id="modalCaptionText">
+                <input type="button" id="modalCaptionChange" value="Change caption">
+            </div>
         </div>
     </div>
 </body>
