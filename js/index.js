@@ -1,9 +1,11 @@
+'use strict';
+
 function closeModal() {
     document.getElementById('myModal').style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    myImages = [
+    let myImages = [
         {
             src: 'perco0.jpg',
             caption: 'this is 0 image',
@@ -52,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     let gallery = new Gallery(myImages);
-    console.log(gallery);
 
     document.getElementsByClassName('next')[0].onclick = function() {
         document.getElementsByClassName('images')[0].style.marginLeft = gallery.next() + 'px';  

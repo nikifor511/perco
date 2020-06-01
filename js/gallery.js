@@ -11,7 +11,7 @@ class Gallery {
         let self = this;
 
         let ul = document.getElementsByClassName('images')[0];
-        this.images.forEach(function(image) {
+        this.images.forEach(function(image) {                               // Заполнение слайдера
             let li = document.createElement("li");
 
             let img = document.createElement('img');
@@ -25,9 +25,9 @@ class Gallery {
                 self.renderModal();
                 document.getElementById('myModal').style.display = "block";
             }
+
             li.append(img);
             ul.append(li);
-            
         });
 
     }
@@ -38,7 +38,6 @@ class Gallery {
             this.currentSlyderImage = 0;
             this.position = 0;
         }
-        console.log(this.position);
         return this.position;
     }
 
@@ -50,22 +49,19 @@ class Gallery {
         } else {
             this.position = this.position + document.getElementById( this.images[this.currentSlyderImage].src ).clientWidth + 4;
         }
-
-        console.log(this.position);
         return this.position;
     }
 
-    renderModal() {
+    renderModal() {                                                             // Заполнение модального окна...
         let self = this;
         let img = this.images.find(function(image) {
             return image.src == self.currentModalImageID;
         });
-        console.log(img);
         
-        let modalImage = document.getElementsByClassName('modalImage')[0];
+        let modalImage = document.getElementsByClassName('modalImage')[0];      // ..картинкой,
         modalImage.src = './images/' + img.src;
 
-        let modalLike = document.getElementsByClassName('modalLike')[0];
+        let modalLike = document.getElementsByClassName('modalLike')[0];        // ..кнопкой "лайк",
         modalLike.onclick = function() {
             img.isLike = !img.isLike;
             if (img.isLike) {
@@ -80,16 +76,14 @@ class Gallery {
             modalLike.src = './images/no-like.png';
         }   
 
-        let modalCaptionText = document.getElementById('modalCaptionText');
+        let modalCaptionText = document.getElementById('modalCaptionText');     // ..полем ввода/отображения caption
         modalCaptionText.value = img.caption;
 
-        let modalCaptionChange = document.getElementById('modalCaptionChange');
+        let modalCaptionChange = document.getElementById('modalCaptionChange'); // ..и кнопкой сохранения caption 
         modalCaptionChange.onclick = function() {
             img.caption = modalCaptionText.value;
             modalCaptionText.style.backgroundColor = "#7dff9399";
         }        
-        
-        console.log(modalImage);
     }
 
 }
